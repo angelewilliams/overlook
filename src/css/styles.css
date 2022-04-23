@@ -1,6 +1,45 @@
+/* Style Resources */
+/* FONTS */
+/* font-family: 'IBM Plex Sans', sans-serif;
+font-family: 'Iceland', cursive;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Unica One', cursive; */
+
+/* COLORS */
+/* #384D48 = Dark Slate Gray
+#6E7271 = Nickel
+#ACAD94 = Laurel Green
+#D8D4D5 = Light Gray
+#E2E2E2 = Plantinum */
+html {
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
 body {
+  width: 100%;
+  height: 100%;
   /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
-  background: #534F4F;
+
+  /* background-image: url('../src/images/back-ground.png'); */
+}
+header {
+  /* background: #384D48; */
+  height: 100px;
+  width:100%;
+}
+
+main {
+  height: 100%;
+  width:100%;
+  /* background: #ACAD94; */
+  display: flex;
+  flex-direction: row;
 }
 
 button {

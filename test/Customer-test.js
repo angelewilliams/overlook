@@ -2,14 +2,15 @@ import chai from 'chai';
 const expect = chai.expect;
 const {customersData, bookingsData, roomsData} = require('./sample-dataset');
 import Customer from '../src/classes/Customer';
+import Booking from '../src/classes/Booking';
 
-describe('Customer', () => {
-	let customer;
+
+describe.only('Customer', () => {
+	let customer, sadPathCustomer;
 
 	beforeEach(() => {
-		customer = new Customer(customersData[0]);
-		//userid 1
-		sadPathCustomer = new Customer(customersData[6]);
+		customer = new Customer(customersData[0], bookingsData, roomsData);
+		sadPathCustomer = new Customer(customersData[6], bookingsData, roomsData);
 	});
 
 	it('should be a function', () => {
@@ -25,21 +26,28 @@ describe('Customer', () => {
 	});
 
 	it('should have a list of bookings', () => {
-		customer.getBookings(bookingsData);
-		sadPathCustomer.getBookings(bookingsData);
-		expect(customer.bookings.length).to.equal()
+		// customer.getBookings(bookingsData, roomsData);
+		// sadPathCustomer.getBookings(bookingsData, roomsData);
+		// customer.getBookings(bookingsData, roomsData);
+		// console.log('happy path bookings: ', customer.bookings)
+		// sadPathCustomer.getBookings(bookingsData, roomsData);
+		// console.log('sad path bookings: ', sadPathCustomer.bookings)
+		expect(customer.bookings.length).to.equal(2)
 		expect(sadPathCustomer.bookings.length).to.equal(0)
 	});
 
 	it('should calculate a total spend', () => {
-		customer.calculateTotalSpend();
-		expect(customer.totalSpend).to.equal(477.38)
+		// sadPathCustomer.calculateTotalSpend();
+		expect(sadPathCustomer.totalSpend).to.equal(0)
+
+		// customer.calculateTotalSpend();
+		expect(customer.totalSpend).to.equal(roomsData[1].costPerNight + roomsData[3].costPerNight)
 	});
 
-	it('should be able to book a room', () => {
-
-	});
-})
+	// it('should be able to book a room', () => {
+	//
+	// });
+});
 
 /*
 As a customer:

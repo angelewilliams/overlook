@@ -50,3 +50,7 @@ button {
 .logo {
   height: 85px;
 }
+
+.hidden {
+  display: none;
+}

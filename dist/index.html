@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;400&family=Iceland&family=Open+Sans:wght@300&family=Unica+One&display=swap" rel="stylesheet">
+
   <title>Overlook Hotel</title>
 </head>
 <body>
@@ -15,8 +17,19 @@
     <div></div>
   </header>
   <main>
+    <aside class="user-trips"> my trips
+      <section class="current-bookings-area card">
+        <h2 class="current-bookings-text"></h2>
+      </section>
+      <section class="upcoming-bookinigs-area card">
+        <h2 class="upcoming-bookings-text"></h2>
+      </section>
 
-    <section class="user-view hidden">
+      <section class="past-bookings-area card">
+        <h2 class="past-bookings-text"> Past Bookings</h2>
+      </section>
+    </aside>
+    <section class="user-view">
       <div class="plan-trip-area">
         <h1 class="">Book a Room</h1>
         <form class="book-trip-form">
@@ -28,14 +41,14 @@
             <label for="date" class="label-names">Arrival date</label>
             <input type="date" class="date-picker" id="date" name="date" required>
           </span>
-          <span class="label-style">
+          <!-- <span class="label-style">
             <label for="duration" class="label-names">Duration (days)</label>
             <input type="number" name="duration" id="duration" class="duration" required>
           </span>
           <span class="label-style">
             <label for="guests" class="label-names">Number of Guests</label>
             <input type="number" name="guests" id="guests" class="guests" required>
-          </span>
+          </span> -->
           <input type="submit" value="Find a Room" id="calculateCostSubmit" class="calculate-cost-button button"
             aria-label="Calculate A Trip Cost">
           <input type="submit" value="Confirm Booking" id="bookHotelSubmit" class="book-hotel-button hidden button"
@@ -44,23 +57,11 @@
         <h2 class="estimated-cost year-text"></h2>
         <h2 class="year-cost-2022 year-text"></h2>
       </div>
+      <!-- <article class="available-rooms-wrapper room-preview">
+      </article> -->
+    </section>
 
-      <h2 class="all-trips">All Trips</h2>
-      <article class="available-rooms-wrapper room-preview">
-      </article>
-    </section>
-    <section class="current-bookings-area card">
-      <h2 class="current-bookings-text"></h2>
-    </section>
-    <section class="upcoming-bookinigs-area card">
-      <h2 class="upcoming-bookings-text"></h2>
-    </section>
-    <section class="pending-bookings-area card">
-      <h2 class="pending-bookings-text"></h2>
-    </section>
-    <section class="past-bookings-area card">
-      <h2 class="past-bookings-text"></h2>
-    </section>
+
   </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>

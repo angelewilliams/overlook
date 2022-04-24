@@ -4,7 +4,7 @@ class Booking {
     this.userID = bookingData.userID;
     this.date = bookingData.date;
     this.roomNum = bookingData.roomNumber;
-    this.roomInfo = this.getRoomData(roomsData) || 'added';
+    this.roomInfo = this.getRoomData(roomsData) || 'Not available at this time';
     this.roomType;
     this.bidet;
     this.bedSize;
@@ -22,6 +22,7 @@ class Booking {
         this.cost = hotelRoom.costPerNight; // || 'Not available at this time';
       }
     });
+   return this.roomInfo = 'Room info has been added'
   }
 
 }

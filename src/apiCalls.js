@@ -10,7 +10,7 @@ const getData = (url) => {
      });
 }
 
-const postBooking = (booking) => {
+const postData = (booking) => {
   return fetch(`http://localhost:3001/api/v1/booking`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -27,7 +27,14 @@ const postBooking = (booking) => {
     });
 }
 
+const customersData = getData('customers');
+const roomsData = getData('rooms');
+const bookingsData = getData('bookings');
+
 export {
+  customersData,
+  roomsData,
+  bookingsData,
   getData,
-  postBooking
+  postData
 };

@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;400&family=Iceland&family=Open+Sans:wght@300&family=Unica+One&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;400&family=Iceland&family=Open+Sans:wght@300&family=Unica+One&display=swap" rel="stylesheet">
 
-  <title>Overlook Hotel</title>
-</head>
-<body>
-  <header>
-    <div>
+    <title>Overlook Hotel</title>
+  </head>
+  <body>
+    <nav class="top-nav" id="topNav">
       <img class="logo" src="./images/overlook-logo.png" alt="Overlook logo">
+      <div class="top-nav-options">
+        <a class="active top-nav-text" href="#MyBookings">My Bookings</a>
+        <a class="top-nav-text" href="#BookARoom">Book a Room</a>
+        <a class="top-nav-text" href="#logout">Logout</a>
+      </div>
+    </nav>
+    <div class="alert hidden" id="alertBox">
+      <article class="message-box">
+        <h3 id="message"></h3>
+      </article>
     </div>
-    <!-- <nav class="" id=""> </nav> -->
-    <div></div>
-  </header>
-  <main>
-    <aside class="user-trips"> my trips
-      <section class="current-bookings-area card">
-        <h2 class="current-bookings-text"></h2>
-      </section>
-      <section class="upcoming-bookinigs-area card">
-        <h2 class="upcoming-bookings-text"></h2>
+    <main>
+      <section class="bookings-dashboard-wrapper">
+      <div class="bookings-dashboard-background"> </div>
+      <section class="bookings-dashboard user-view" id="bookingsDashboard">
+
+        <section class="current-bookings-area card" id="currentBookings">
+          <h2 class="current-bookings-text">Current Bookings</h2>
+        </section>
+
+        <section class="upcoming-bookinigs-area card" id="upcomingBookings">
+          <h2 class="upcoming-bookings-text">Upcoming Bookings</h2>
+        </section>
+
+        <section class="past-bookings-area card" id="pastBookings">
+          <h2 class="past-bookings-text">Past Bookings</h2>
+        </section>
       </section>
 
-      <section class="past-bookings-area card">
-        <h2 class="past-bookings-text"> Past Bookings</h2>
+      <section class="book-room user-view hidden">
+        <div class="plan-trip-area">
+          <h1 class="">Book a Room</h1>
+          <form class="book-trip-form" id="bookRoomForm">
+            <!-- <span class="label-style">
+              <label for="rooms" class="label-names">Select a Room</label>
+              <select name="rooms" class="rooms-list" id="rooms" value="rooms"></select>
+            </span> -->
+            <span class="label-style">
+              <label for="date" class="label-names">Arrival date</label>
+              <input type="date" class="date-picker" id="date" name="date" required>
+            </span>
+            <!-- <span class="label-style">
+              <label for="duration" class="label-names">Duration (days)</label>
+              <input type="number" name="duration" id="duration" class="duration" required>
+            </span>
+            <span class="label-style">
+              <label for="guests" class="label-names">Number of Guests</label>
+              <input type="number" name="guests" id="guests" class="guests" required>
+            </span> -->
+            <input type="submit" value="Find a Room" id="calculateCostSubmit" class="calculate-cost-button button"
+              aria-label="Calculate A Trip Cost">
+            <input type="submit" value="Confirm Booking" id="bookHotelSubmit" class="book-hotel-button hidden button"
+              aria-label="Confirm Room Booking">
+          </form>
+          <h2 class="estimated-cost"></h2>
+        </div>
+        <!-- <article class="available-rooms-wrapper room-preview">
+        </article> -->
       </section>
-    </aside>
-    <section class="user-view">
-      <div class="plan-trip-area">
-        <h1 class="">Book a Room</h1>
-        <form class="book-trip-form">
-          <span class="label-style">
-            <label for="rooms" class="label-names">Select a Room</label>
-            <select name="rooms" class="rooms-list" id="rooms" value="rooms"></select>
-          </span>
-          <span class="label-style">
-            <label for="date" class="label-names">Arrival date</label>
-            <input type="date" class="date-picker" id="date" name="date" required>
-          </span>
-          <!-- <span class="label-style">
-            <label for="duration" class="label-names">Duration (days)</label>
-            <input type="number" name="duration" id="duration" class="duration" required>
-          </span>
-          <span class="label-style">
-            <label for="guests" class="label-names">Number of Guests</label>
-            <input type="number" name="guests" id="guests" class="guests" required>
-          </span> -->
-          <input type="submit" value="Find a Room" id="calculateCostSubmit" class="calculate-cost-button button"
-            aria-label="Calculate A Trip Cost">
-          <input type="submit" value="Confirm Booking" id="bookHotelSubmit" class="book-hotel-button hidden button"
-            aria-label="Confirm Room Booking">
-        </form>
-        <h2 class="estimated-cost year-text"></h2>
-        <h2 class="year-cost-2022 year-text"></h2>
-      </div>
-      <!-- <article class="available-rooms-wrapper room-preview">
-      </article> -->
     </section>
 
-
-  </main>
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
-</body>
+    </main>
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
+  </body>
 </html>

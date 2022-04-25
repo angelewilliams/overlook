@@ -19,11 +19,16 @@ const userBookingDashboard = document.getElementById('bookingsDashboard');
 const message = document.getElementById('message')
 
 const bookingsDashboard = document.getElementById('bookingsDashboard');
+const userBookRoomView = document.getElementById('userBookRoomView');
 
 const customerTotalSpend = document.getElementById('customerTotalSpend');
 const currentBookings = document.getElementById('currentBookings');
 const upcomingBookings = document.getElementById('upcomingBookings');
 const pastBookings = document.getElementById('pastBookings');
+
+const myBookingsNav = document.getElementById('myBookings');
+const bookARoomNav = document.getElementById('bookARoom');
+const logoutNav = document.getElementById('logout');
 
 const startDate = document.querySelector('.date-picker');
 const bookRoomForm = document.getElementById('bookRoomForm');
@@ -48,20 +53,6 @@ const fetchData = () => {
       handleData(data)
     });
 };
-
-
-//------------------Event Listeners------------------
-
-window.addEventListener('load', fetchData());
-
-//------------------Event Handlers-------------------
-const loadOverlook = (customersData, roomsData, bookingsData, getData, postData) => {
-  let i = Math.floor(Math.random() * customersData.length);
-  let customer = new Customer(customersData[i], bookingsData, roomsData);
-  loadCustomerDashboard(customer);
-  let hotel = new Hotel(customersData, bookingsData, roomsData);
-};
-
 const handleData = (data) => {
   customersData = data[0];
   roomsData = data[1];
@@ -69,10 +60,40 @@ const handleData = (data) => {
   getData = data[3];
   postData = data[4];
   loadOverlook(customersData, roomsData, bookingsData, getData, postData);
+  createEventListeners(customersData, roomsData, bookingsData, getData, postData);
 };
 
+const loadOverlook = (customersData, roomsData, bookingsData, getData, postData) => {
+  let i = Math.floor(Math.random() * customersData.length);
+  let customer = new Customer(customersData[i], bookingsData, roomsData);
+  let hotel = new Hotel(customersData, bookingsData, roomsData);
+  loadCustomerDashboard(customer);
+};
+
+//------------------Event Listeners------------------
+window.addEventListener('load', fetchData());
+
+const createEventListeners = (customersData, roomsData, bookingsData, getData, postData) => {
+  bookARoomNav.addEventListener('click', displayBookingForm);
+
+
+
+
+}
+// myBookingsNav.addEventListener();
+
+
+//------------------Event Handlers-------------------
+
+
+
+
+const displayBookingForm = () => {
+  hideElement(bookingsDashboard);
+  showElement(userBookRoomView);
+}
+
 const loadCustomerDashboard = (customer) => {
-  customer.totalSpend
   customerTotalSpend.innerText = `Total Spend: $${customer.totalSpend}`;
   customer.bookings.forEach((booking) => {
     let today = new Date();
@@ -87,8 +108,7 @@ const loadCustomerDashboard = (customer) => {
       currentBookings.innerHTML += bookingPreview(booking)
     };
   });
-
-}
+};
 
 const bookingPreview = (booking) => {
     return `
@@ -99,9 +119,40 @@ const bookingPreview = (booking) => {
       </div>`
 };
 
-const displayMessage = () => {
-  message.innerText = 'Test Message';
+const avaialableRoomPreview = (room) => {
+  
 }
+
+const displayMessage = () => {
+
+  message.innerText = 'Test Message';
+};
+
+
+const showElement = (element) => {
+    element.classList.remove("hidden");
+};
+
+const hideElement = (element) => {
+    element.classList.add("hidden");
+};
+
+
+
+
+
+const showElements = (elementsArr) => {
+  elementsArr.forEach((element) => {
+    element.classList.remove("hidden");
+  });
+};
+
+const hideElements = (elementsArr) => {
+  elementsArr.forEach((element) => {
+    element.classList.add("hidden");
+  });
+};
+
 
 export {
   displayMessage

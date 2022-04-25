@@ -19,7 +19,7 @@
 html {
   width: 100%;
   height: 100%;
-  background: url('https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80') no-repeat center center fixed;
+  background: url('../images/back-ground.png') no-repeat center center fixed;
   /* -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover; */
@@ -29,7 +29,7 @@ html {
 body {
   width: 100%;
   height: 100%;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Baumans', sans-serif;
   display: flex;
   flex-direction: column;
   /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
@@ -62,15 +62,16 @@ h1 {
 
 h2 {
   font-family: 'Iceland', sans-serif;
-  font-size: 1.85vw;
+  /* font-size: 1.85vw; */
 }
 
 .logo {
   height: 8vw;
+  margin-top: 15px;
 }
 
 .top-nav {
-  background-color: #384D48;
+  background-color: #414833;
   padding: 1vw;
   margin: none;
   color: #E2E2E2;
@@ -88,7 +89,9 @@ h2 {
  }
 
 .alert {
-  background-color: #ACAD94;
+  background-color: #99582a;
+/* #ACAD94 */
+
   height: 4vw;
 }
 
@@ -102,7 +105,7 @@ h2 {
   align-items: flex-end
 }
 
-.top-nav a {
+.top-nav-text{
   font-family: 'Iceland', sans-serif;
   font-size: 2.3vw;
   color: #E2E2E2;
@@ -111,24 +114,37 @@ h2 {
   display: block;
   text-align: center;
   text-decoration: none;
+  background: none;
+	border: none;
+	padding: 0;
+  cursor: pointer;
 }
 
-/* .topnav a:hover {
-  background-color: #ddd;
-  color: black;
-} */
-
-.topnav a.active {
-  text-decoration: underline;
-  color: #ACAD94;
+.top-nav-text:hover {
+  background-color: #333D29;
+  padding: 4px;
+  border-radius: 5px;
+}
+.active {
+  color: #c1b7ae;
+  padding: 4px;
+  border-radius: 5px;
 }
 
+.button {
+  font-family: 'Baumans', sans-serif;
+  background-color: #ada4a0;
+  font-size: 1vw;
+  padding: 2px;
+  border-radius: 5px;
+
+}
 
 .bookings-dashboard-background {
   /* border: blue 2px solid; */
   width: 100%;
   height: 100%;
-  background-color: #D8D4D5;
+  background-color: #f8f1e5;
   opacity:.79;
   position: relative;
   z-index: 0;
@@ -146,17 +162,26 @@ h2 {
   flex-direction: column;
 }
 
-.bookings-dashboard {
-  /* border: red 2px solid; */
+.bookings-dashboard, .book-room {
+  border: red 2px solid;
   z-index: 1;
   position: absolute;
-  /* background-color: #D8D4D5; */
   width: 70%;
   height: 70%;
   overflow-y: scroll;
-  /* background-color: #E2E2E2; */
-  /* opacity: 1; */
 }
+
+.plan-trip-area {
+  border: yellow 3px solid;
+}
+
+.book-trip-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .booking-preview {
     display: flex;
     flex-direction: row;
@@ -171,12 +196,37 @@ h2 {
     padding: 2px;
     width: 95%;
   }
+
   p::first-letter {
     text-transform: capitalize;
   }
 
+
+  .available-rooms-wrapper {
+    display:flex;
+    flex-direction: row;
+
+  }
+
   .bookings-text {
     background-color: #2d2e2e;
+    color: #E2E2E2;
+    border-radius: 5px;
+    margin: 4px;
+    padding: 4px;
+    width: 98%;
+  }
+/* .book-room {
+    z-index: 1;
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    overflow-y: scroll;
+    all of this is duplicated above
+
+} */
+  .no-bookings-message {
+    background-color: #ada4a0;
     color: #E2E2E2;
     border-radius: 5px;
     margin: 4px;

@@ -15,11 +15,12 @@ class Booking {
   getRoomData(roomsData) {
    roomsData.forEach((hotelRoom) => {
       if(this.roomNum === hotelRoom.number) {
-        this.roomType = hotelRoom.roomType; // || 'Not available at this time';
-        this.bidet = hotelRoom.bidet; // || 'Not available at this time';
-        this.bedSize = hotelRoom.bedSize; // || 'Not available at this time';
-        this.numBeds = hotelRoom.numBeds; // || 'Not available at this time';
-        this.cost = hotelRoom.costPerNight; // || 'Not available at this time';
+        this.roomType = hotelRoom.roomType;
+        this.bidet = hotelRoom.bidet;
+        this.bedSize = hotelRoom.bedSize;
+        this.numBeds = hotelRoom.numBeds;
+        let roomCost = (Math.round(hotelRoom.costPerNight * 100) / 100);
+        this.cost = roomCost;
       }
     });
    return this.roomInfo = 'Room info has been added'

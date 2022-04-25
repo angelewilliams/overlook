@@ -34,35 +34,34 @@ class Customer {
     return this.totalSpend
   }
 
-  // getCurrentTrips() {
+  // getCurrentBookings() {
   //   return this.bookings.reduce((currentRes, booking) => {
   //     let today = new Date();
   //     let bookingDate = new Date(booking.date);
-  //     if (startDate < today) {
+  //     if (bookingDate < today) {
   //       currentRes.push(booking);
   //     }
   //     return currentRes;
   //   }, []);
   // }
   //
-  // getPastTrips() {
-  //   return this.trips.reduce((pastRes, trip) => {
+  // getPastBookings() {
+  //   return this.bookings.reduce((pastRes, booking) => {
   //     let today = new Date();
   //     let bookingDate = new Date(booking.date);
-  //     endDate.setDate(endDate.getDate() + trip.duration);
-  //     if (endDate < today) {
-  //       pastRes.push(trip);
+  //     if (bookingDate < today) {
+  //       pastRes.push(booking);
   //     }
   //     return pastRes;
   //   }, []);
   // }
   //
-  // getUpcomingTrips() {
-  //   return this.trips.reduce((upcomingRes, trip) => {
+  // getUpcomingBookings() {
+  //   return this.bookings.reduce((upcomingRes, booking) => {
   //     let today = new Date();
   //     let bookingDate = new Date(booking.date);
-  //     if (startDate > today) {
-  //       upcomingRes.push(trip);
+  //     if (bookingDate > today) {
+  //       upcomingRes.push(booking);
   //     }
   //     return upcomingRes;
   //   }, []);

@@ -35,9 +35,6 @@ describe.only('Booking', () => {
   });
 
   it('should be able to get additional room data associated with booking', () => {
-		console.log('roominfo', booking1.roomInfo)
-		console.log('roominfo', booking1.roomInfo)
-    // booking.getRoomData(roomsData);
     expect(booking1.roomType).to.equal('single room');
     expect(booking1.bidet).to.equal(true);
     expect(booking1.bedSize).to.equal('queen');

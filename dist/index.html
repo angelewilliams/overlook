@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;400&family=Iceland&family=Open+Sans:wght@300&family=Unica+One&display=swap" rel="stylesheet">
-
     <title>Overlook Hotel</title>
   </head>
   <body>
@@ -26,20 +25,19 @@
       <section class="bookings-dashboard-wrapper">
       <div class="bookings-dashboard-background"> </div>
       <section class="bookings-dashboard user-view" id="bookingsDashboard">
-
-        <section class="current-bookings-area card" id="currentBookings">
-          <h2 class="current-bookings-text">Current Bookings</h2>
+        <div class="total-spend">
+          <h2 class="total-spend-text" id="customerTotalSpend"></h2>
+        </div>
+        <section class="current-bookings-area bookings-display" id="currentBookings">
+          <h2 class="current-bookings-text bookings-text"> Current Bookings</h2>
         </section>
-
-        <section class="upcoming-bookinigs-area card" id="upcomingBookings">
-          <h2 class="upcoming-bookings-text">Upcoming Bookings</h2>
+        <section class="upcoming-bookinigs-area bookings-display" id="upcomingBookings">
+          <h2 class="upcoming-bookings-text bookings-text">Upcoming Bookings</h2>
         </section>
-
-        <section class="past-bookings-area card" id="pastBookings">
-          <h2 class="past-bookings-text">Past Bookings</h2>
+        <section class="past-bookings-area bookings-display" id="pastBookings">
+          <h2 class="past-bookings-text bookings-text">Past Bookings</h2>
         </section>
       </section>
-
       <section class="book-room user-view hidden">
         <div class="plan-trip-area">
           <h1 class="">Book a Room</h1>

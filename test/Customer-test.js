@@ -22,36 +22,22 @@ describe.only('Customer', () => {
 	});
 
 	it('should have a name', () => {
-  	expect(customer.name).to.equal(customersData[0].name)
+  	expect(customer.name).to.equal(customersData[0].name);
 	});
 
 	it('should have a list of bookings', () => {
-		// customer.getBookings(bookingsData, roomsData);
-		// sadPathCustomer.getBookings(bookingsData, roomsData);
-		// customer.getBookings(bookingsData, roomsData);
-		// console.log('happy path bookings: ', customer.bookings)
-		// sadPathCustomer.getBookings(bookingsData, roomsData);
-		// console.log('sad path bookings: ', sadPathCustomer.bookings)
-		expect(customer.bookings.length).to.equal(2)
-		expect(sadPathCustomer.bookings.length).to.equal(0)
+		expect(customer.bookings.length).to.equal(2);
+		expect(sadPathCustomer.bookings.length).to.equal(0);
 	});
 
 	it('should calculate a total spend', () => {
-		// sadPathCustomer.calculateTotalSpend();
-		expect(sadPathCustomer.totalSpend).to.equal(0)
-
-		// customer.calculateTotalSpend();
-		expect(customer.totalSpend).to.equal(roomsData[1].costPerNight + roomsData[3].costPerNight)
+		expect(sadPathCustomer.totalSpend).to.equal(0);
+		let costOfRooms = roomsData[1].costPerNight + roomsData[3].costPerNight;
+		costOfRooms = (Math.round(costOfRooms * 100) / 100);
+		expect(customer.totalSpend).to.equal(costOfRooms);
 	});
 
 	// it('should be able to book a room', () => {
 	//
 	// });
 });
-
-/*
-As a customer:
-
-I should see a dashboard page that shows me:
-Any room bookings I have made (past or present/upcoming)
-The total amount I have spent on rooms*/

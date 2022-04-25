@@ -1,16 +1,16 @@
-// import { displayMessage } from './dom-updates.js'
+import { displayMessage } from './scripts.js'
 
-const getData = (url) => {
+const getRequest = (url) => {
   return fetch(`http://localhost:3001/api/v1/${url}`)
      .then(response => response.json())
      .then(data => data[url])
      .catch(error => {
        message.innerText = `There was a problem completing your request. Error: ${error.message}`
-       // displayMessage();
+       displayMessage();
      });
 }
 
-const postData = (booking) => {
+const postRequest = (booking) => {
   return fetch(`http://localhost:3001/api/v1/booking`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -18,23 +18,23 @@ const postData = (booking) => {
   })
     .then(response => {
       if(!response.ok) throw new Error('Please fill out all fields.');
-      // message.innerText = `Your booking request has been accepted.`
-      // return response.json();
+      message.innerText = `Your booking request has been accepted.`
+      return response.json();
     })
     .catch(error => {
       message.innerText = `Your Booking request has been rejected: ${error.message}`
-      // displayMessage();
+      displayMessage();
     });
 }
 
-const customersData = getData('customers');
-const roomsData = getData('rooms');
-const bookingsData = getData('bookings');
+const customersAPI = getRequest('customers');
+const roomsAPI = getRequest('rooms');
+const bookingsAPI = getRequest('bookings');
 
 export {
-  customersData,
-  roomsData,
-  bookingsData,
-  getData,
-  postData
+  customersAPI,
+  roomsAPI,
+  bookingsAPI,
+  getRequest,
+  postRequest
 };

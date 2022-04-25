@@ -1,52 +1,174 @@
 /* Style Resources */
-/* FONTS */
-/* font-family: 'IBM Plex Sans', sans-serif;
-font-family: 'Iceland', cursive;
-font-family: 'Open Sans', sans-serif;
-font-family: 'Unica One', cursive; */
+    /* FONTS */
+    /* font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Iceland', cursive;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Unica One', cursive; */
 
-/* COLORS */
-/* #384D48 = Dark Slate Gray
-#6E7271 = Nickel
-#ACAD94 = Laurel Green
-#D8D4D5 = Light Gray
-#E2E2E2 = Plantinum */
+    /* COLORS */
+    /* #384D48 = Dark Slate Gray
+    #6E7271 = Nickel
+    #ACAD94 = Laurel Green
+    #D8D4D5 = Light Gray
+    #E2E2E2 = Plantinum */
+* {
+  /* border: red 2px solid; */
+ }
+
+
 html {
   width: 100%;
   height: 100%;
   background: url('https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80') no-repeat center center fixed;
-  -webkit-background-size: cover;
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
+  -o-background-size: cover; */
   background-size: cover;
 
 }
 body {
   width: 100%;
   height: 100%;
+  font-family: 'IBM Plex Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
   /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
-
   /* background-image: url('../src/images/back-ground.png'); */
 }
 header {
   /* background: #384D48; */
-  height: 100px;
+  height: 90px;
   width:100%;
+  position: fixed;
+  top: 0;
+
 }
 
 main {
-  height: 100%;
+  height:100%;
   width:100%;
   /* background: #ACAD94; */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
-button {
-  /* background-color:; */
-  cursor: pointer;
+h1 {
+  font-family: 'Iceland', sans-serif;
+  font-size: 2.3vw;
+}
+
+h2 {
+  font-family: 'Iceland', sans-serif;
+  font-size: 1.7vw;
 }
 
 .logo {
-  height: 85px;
+  height: 8vw;
+}
+
+.top-nav {
+  background-color: #384D48;
+  padding: 1vw;
+  margin: none;
+  color: #E2E2E2;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  overflow: hidden;
+
+  /* height: 90%; */
+  /* border-radius: 10px; */
+
+ }
+
+.alert {
+  background-color: #ACAD94;
+  height: 4vw;
+}
+
+.top-nav-options{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  justify-content: space-evenly;
+  align-items: flex-end
+}
+
+.top-nav a {
+  font-family: 'Iceland', sans-serif;
+  font-size: 2.3vw;
+  color: #E2E2E2;
+  text-decoration: none;
+  float: left;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* .topnav a:hover {
+  background-color: #ddd;
+  color: black;
+} */
+
+.topnav a.active {
+  text-decoration: underline;
+  color: #ACAD94;
+}
+
+
+.bookings-dashboard-background {
+  border: blue 2px solid;
+  width: 100%;
+  height: 100%;
+  background-color: #D8D4D5;
+  opacity:.79;
+  position: relative;
+  z-index: 0;
+}
+.bookings-dashboard-wrapper {
+  width: 80%;
+  height: 85%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: green 3px solid;
+
+}
+
+.bookings-dashboard {
+  border: red 2px solid;
+  z-index: 1;
+  position: absolute;
+  /* background-color: #D8D4D5; */
+  width: 70%;
+  height: 70%;
+  /* background-color: #E2E2E2; */
+  /* opacity: 1; */
+}
+.booking-preview {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ACAD94;
+    color: white;
+    border-radius: 3px;
+    margin: 2px;
+    padding: 2px;
+  }
+
+.hidden {
+  display: none;
 }

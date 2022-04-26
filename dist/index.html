@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;400&family=Iceland&family=Open+Sans:wght@300&family=Unica+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baumans&family=IBM+Plex+Sans:wght@100;400&family=Iceland&family=Montserrat&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Overlook Hotel</title>
   </head>
   <body>
     <nav class="top-nav" id="topNav">
       <img class="logo" src="./images/overlook-logo.png" alt="Overlook logo">
       <div class="top-nav-options">
-        <a class="active top-nav-text" href="#MyBookings">My Bookings</a>
-        <a class="top-nav-text" href="#BookARoom">Book a Room</a>
-        <a class="top-nav-text" href="#logout">Logout</a>
+        <input class="top-nav-text active" type="button" id="myBookings" value="My Bookings">
+        <input class="top-nav-text" type="button" id="bookARoom" value="Book a Room">
+        <input class="top-nav-text logoutAction" type="button" id="logout" value="Logout">
       </div>
     </nav>
     <div class="alert hidden" id="alertBox">
@@ -24,6 +24,7 @@
     <main>
       <section class="bookings-dashboard-wrapper">
       <div class="bookings-dashboard-background"> </div>
+
       <section class="bookings-dashboard user-view" id="bookingsDashboard">
         <div class="total-spend">
           <h2 class="total-spend-text" id="customerTotalSpend"></h2>
@@ -38,35 +39,46 @@
           <h2 class="past-bookings-text bookings-text">Past Bookings</h2>
         </section>
       </section>
-      <section class="book-room user-view hidden">
-        <div class="plan-trip-area">
+
+      <section class="book-room user-view hidden" id="userBookRoomView" >
+        <div class="booking-area">
           <h1 class="">Book a Room</h1>
-          <form class="book-trip-form" id="bookRoomForm">
-            <!-- <span class="label-style">
-              <label for="rooms" class="label-names">Select a Room</label>
-              <select name="rooms" class="rooms-list" id="rooms" value="rooms"></select>
-            </span> -->
+          <form class="book-room-form" id="bookRoomForm">
             <span class="label-style">
               <label for="date" class="label-names">Arrival date</label>
               <input type="date" class="date-picker" id="date" name="date" required>
             </span>
-            <!-- <span class="label-style">
-              <label for="duration" class="label-names">Duration (days)</label>
-              <input type="number" name="duration" id="duration" class="duration" required>
-            </span>
-            <span class="label-style">
-              <label for="guests" class="label-names">Number of Guests</label>
-              <input type="number" name="guests" id="guests" class="guests" required>
-            </span> -->
-            <input type="submit" value="Find a Room" id="calculateCostSubmit" class="calculate-cost-button button"
-              aria-label="Calculate A Trip Cost">
-            <input type="submit" value="Confirm Booking" id="bookHotelSubmit" class="book-hotel-button hidden button"
+            <input type="submit" value="Find a Room" id="submitFindRoom" class=" button"
+              aria-label="Find a Room">
+            <input type="submit" value="Confirm Booking" id="submitBookHotlRoom" class="book-hotel-button hidden button"
               aria-label="Confirm Room Booking">
           </form>
-          <h2 class="estimated-cost"></h2>
         </div>
-        <!-- <article class="available-rooms-wrapper room-preview">
-        </article> -->
+        <div>
+          <div class= "available-rooms-wrapper">
+
+            <form class="filters" id="bookingFilters">
+              <h2>Filter By Room Type</h2>
+              <input type="radio" id="singleRoom" name="booking-filters" value="single room">
+              <label for="singleRoom">Single Room</label>
+
+              <input type="radio" id="suite" name="booking-filters" value="suite">
+              <label for="suite">Suite</label>
+
+              <input type="radio" id="resSuite" name="booking-filters" value="residential suite">
+              <label for="resSuite">Residential Suite</label>
+
+              <input type="radio" id="juniorSuite" name="booking-filters" value="junior suite">
+              <label for="juniorSuite">Junior Suite</label>
+
+              <button id="clear" type="reset" class="reset-filters-button" name="booking-filters">
+              Reset Filters
+              </button>
+            </form>
+          </div>
+          <section class="room-preview" id='availableRooms'>
+          </section>
+      </div>
       </section>
     </section>
 

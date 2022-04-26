@@ -18,7 +18,7 @@
     </nav>
     <div class="alert hidden" id="alertBox">
       <article class="message-box">
-        <h3 id="message"></h3>
+        <h1 class="alert-message" id="message"></h1>
       </article>
     </div>
     <main>
@@ -46,12 +46,12 @@
           <form class="book-room-form" id="bookRoomForm">
             <span class="label-style">
               <label for="date" class="label-names">Arrival date</label>
-              <input type="date" class="date-picker" id="date" name="date" required>
+              <input type="date" class="date-picker" id="date" name="date"   value="2022-05-01" required>
             </span>
             <input type="submit" value="Find a Room" id="submitFindRoom" class=" button"
-              aria-label="Find a Room">
-            <input type="submit" value="Confirm Booking" id="submitBookHotlRoom" class="book-hotel-button hidden button"
-              aria-label="Confirm Room Booking">
+              aria-label="Find a Room"> <br>
+            <input type="reset" value="Clear Search Results" id="resetDateSearch" class="button reset-button"
+              aria-label="Reset Date Search">
           </form>
         </div>
         <div>
@@ -71,7 +71,7 @@
               <input type="radio" id="juniorSuite" name="booking-filters" value="junior suite">
               <label for="juniorSuite">Junior Suite</label>
 
-              <button id="clear" type="reset" class="reset-filters-button" name="booking-filters">
+              <button id="clear" type="reset" class="reset-filters-button button" name="booking-filters">
               Reset Filters
               </button>
             </form>

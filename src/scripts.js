@@ -1,7 +1,5 @@
 //------------------ Imports -------------------
 import './css/styles.css';
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
 import './images/overlook-logo.png';
 import {
   customersAPI,
@@ -17,6 +15,7 @@ import Hotel from '../src/classes/Hotel';
 const topNav = document.getElementById('topNav')
 const userBookingDashboard = document.getElementById('bookingsDashboard');
 const message = document.getElementById('message')
+const alertBox = document.getElementById('alertBox')
 
 const bookingsDashboard = document.getElementById('bookingsDashboard');
 const userBookRoomView = document.getElementById('userBookRoomView');
@@ -83,18 +82,62 @@ const createEventListeners = (customersData, roomsData, bookingsData, getData, p
   });
 
   bookingFiltersForm.addEventListener('click', (e) => {
-    filterRoomsOnType(e);
+    filterRoomsByType(e);
   });
 
-}
-// myBookingsNav.addEventListener();
+  availableRoomsSection.addEventListener('click', (e) => {
+    selectRoomToBook(e);
+  })
 
+}
 
 //------------------Event Handlers-------------------
 
+const selectRoomToBook = (e) => {
+  console.log(e.target.id)
+  postBooking(e.target.id, )
+}
 
-const filterRoomsOnType = (e) => {
-  console.log(e.target.dataset.type)
+const postBooking = (id) => {
+  console.log(id)
+  let numId = parseInt(id)
+  console.log(numId)
+  let formattedDate = date.value.split('-').join('/');
+  let newBooking = { "userID": currentUser.id, "date": formattedDate, "roomNumber": numId };
+
+  postData(newBooking)
+  .then((response) => {
+    if(!response.ok) {
+      displayMessage('There was a problem completing your request.')
+    } else {
+      return response.json();
+    }
+  })
+  .then((bookings) => {
+    getData(`bookings`)
+    .then(data => {
+      let newBookingsData = data;
+      return newBookingsData;
+    })
+    .then(newBookingsData => {
+      overlookHotel = new Hotel(customersData, newBookingsData, roomsData);
+      currentUser.getBookings(newBookingsData, roomsData);
+      currentUser.calculateTotalSpend();
+      // viewHome();
+      loadCustomerDashboard(currentUser);
+      displayMessage('woohoo.')
+    })
+    .catch(error => {
+      displayMessage('There was a problem completing your request. Please try again later.')
+    });
+  });
+};
+
+const viewHome = () => {
+  // console.log('build out view home')
+};
+
+const filterRoomsByType = (e) => {
   if(e.target.id) {
       displayFilteredTags(e.target.value);
     };
@@ -104,24 +147,19 @@ const filterRoomsOnType = (e) => {
 };
 
 const displayFilteredTags = (type) => {
-  console.log(type)
-  let allAvailRoomPreviews = document.querySelectorAll('.avilable-room-info');
-  allAvailRoomPreviews.forEach((preview) => {
+  let availRoomPreviews = document.querySelectorAll('.avilable-room-info');
+  availRoomPreviews.forEach((preview) => {
     if(preview.dataset.type !== type){
       hideElement(preview);
-    }
-    else {
+    } else {
       showElement(preview);
     }
-  })
-
-  let formatedDate = date.value.split("-").join("/")
-  let filteredRoooms = overlookHotel.filterByType(formatedDate, type);
+  });
 };
 
 const resetRender = () => {
-  let formatedDate = date.value.split("-").join("/")
-  displayAvailableRooms(formatedDate)
+  let formattedDate = date.value.split("-").join("/")
+  displayAvailableRooms(formattedDate)
 };
 
 const displayBookingForm = () => {
@@ -155,80 +193,45 @@ const bookingPreview = (booking) => {
       </div>`
 };
 
-const avaialableRoomPreview = (room) => {
-
-}
-
-const displayMessage = () => {
-  showElement(message)
-  message.innerText = 'Test Message';
-  setTimeout(() => {
-    hideElement(message), 2500
-  })
+const displayMessage = (messageText) => {
+  showElement(alertBox)
+  message.innerText = `${messageText}`;
+  setTimeout(() => resetMessage(), 3500)
 };
 
+const resetMessage = () => {
+  message.innerText = ''
+  hideElement(alertBox)
+}
 
 const findARoom = (e) => {
   e.preventDefault();
-  let formatedDate = date.value.split("-").join("/");
-  displayAvailableRooms(formatedDate);
+  let formattedDate = date.value.split("-").join("/");
+  displayAvailableRooms(formattedDate);
 };
 
-const displayAvailableRooms = (formatedDate) => {
-  let availableRooms = overlookHotel.getAvailableRooms(formatedDate);
-  availableRooms.forEach((room) => {
-    availableRoomsSection.innerHTML += `
-     <div class="avilable-room-info" id="${room.number}preview" data-type="${room.roomType}">
-       <p>Room ${room.number} is a  ${room.roomType} with ${room.numBeds} ${room.bedSize} beds</p>
-       <p>Cost per Night: $${room.costPerNight}</p>
-       <button class="button bookIt" id="${room.number}"> Book this room </button>
-     </div>`
-  });
-};
-
-
-
-const bookThisRoom = (e, roomToBook) => {
-
-  let newBooking = {
-    userID: currentUser.id,
-    date: formatedDate,
-    roomNumber: roomToBook.number,
-  };
-  return newBooking;
-}
-/*
-const postToBookings = (id) => {
-  let date = dateInput.value;
-  date = date.split('-');
-  date = date.join('/');
-  roomNumber = findIdHelper(id);
-  roomNumber = Number(roomNumber);
-  let obj = { "userID": currentUser.id, "date": date, "roomNumber": roomNumber };
-
-  postBooking(obj).then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw Error(response.statusText);
-    }
-  })
-  .then((booking) => {
-    errorMessage.innerText = '';
-    getPromise(`http://localhost:3001/api/v1/bookings`)
-    .then(jsonArray => {
-      bookingsData = jsonArray.bookings;
-      currentHotel = new Hotel(bookingsData, roomsData);
-      populateUserBookings(bookingsData);
-      updateRoomInfo(roomsData);
-      findUserTotalCost(roomsData);
-    })
-    .catch(error => {
-      errorMessage.innerText = 'we\'re sorry - there was a problem booking your room';
+const displayAvailableRooms = (formattedDate) => {
+  console.log(formattedDate)
+  availableRoomsSection.innerHTML = '';
+  let availableRooms = overlookHotel.getAvailableRooms(formattedDate);
+  if(availableRooms.length) {
+    availableRooms.forEach((room) => {
+      availableRoomsSection.innerHTML += `
+       <div class="avilable-room-info" id="${room.number}preview" data-type="${room.roomType}">
+         <p>Room ${room.number} is a  ${room.roomType} with ${room.numBeds} ${room.bedSize} beds</p>
+         <p>Cost per Night: $${room.costPerNight}</p>
+         <button class="button bookIt" id="${room.number}"> Book this room </button>
+       </div>`
     });
-  });
+  } else if (!availableRooms.length) {
+
+    availableRoomsSection.innerHTML += `
+    <div class="no-rooms-available">
+      <p>Oh no! We currently have no rooms available for ${formattedDate}. We are very sorry that we cannot meet your accomodation needs but would love you to stay another time!</p>
+    </div>`
+  }
 };
-*/
+
 
 const showElement = (element) => {
   element.classList.remove("hidden");
@@ -237,7 +240,6 @@ const showElement = (element) => {
 const hideElement = (element) => {
   element.classList.add("hidden");
 };
-
 
 
 export {

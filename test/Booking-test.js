@@ -3,10 +3,9 @@ const expect = chai.expect;
 const {customersData, roomsData, bookingsData} = require('./sample-dataset');
 import Hotel from '../src/classes/Hotel';
 import Customer from '../src/classes/Customer';
-import Manager from '../src/classes/Manager';
 import Booking from '../src/classes/Booking';
 
-describe.only('Booking', () => {
+describe('Booking', () => {
 	let booking1, booking2;
 
 	beforeEach(() => {

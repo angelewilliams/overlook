@@ -120,7 +120,7 @@ const bookingPreview = (booking) => {
 };
 
 const avaialableRoomPreview = (room) => {
-  
+
 }
 
 const displayMessage = () => {
@@ -152,6 +152,51 @@ const hideElements = (elementsArr) => {
     element.classList.add("hidden");
   });
 };
+
+/*
+//   const postToBookings = (id) => {
+// let date = dateInput.value;
+// date = date.split('-');
+// date = date.join('/');
+// roomNumber = findIdHelper(id);
+// roomNumber = Number(roomNumber);
+// let obj = { "userID": currentUser.id, "date": date, "roomNumber": roomNumber };
+
+
+
+
+const postToBookings = (id) => {
+  let date = dateInput.value;
+  date = date.split('-');
+  date = date.join('/');
+  roomNumber = findIdHelper(id);
+  roomNumber = Number(roomNumber);
+  let obj = { "userID": currentUser.id, "date": date, "roomNumber": roomNumber };
+
+  postBooking(obj).then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response.statusText);
+    }
+  })
+  .then((booking) => {
+    errorMessage.innerText = '';
+    getPromise(`http://localhost:3001/api/v1/bookings`)
+    .then(jsonArray => {
+      bookingsData = jsonArray.bookings;
+      currentHotel = new Hotel(bookingsData, roomsData);
+      populateUserBookings(bookingsData);
+      updateRoomInfo(roomsData);
+      findUserTotalCost(roomsData);
+    })
+    .catch(error => {
+      errorMessage.innerText = 'we\'re sorry - there was a problem booking your room';
+    });
+  });
+};
+*/
+
 
 
 export {

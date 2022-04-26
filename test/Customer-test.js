@@ -5,7 +5,7 @@ import Customer from '../src/classes/Customer';
 import Booking from '../src/classes/Booking';
 
 
-describe.only('Customer', () => {
+describe('Customer', () => {
 	let customer, sadPathCustomer;
 
 	beforeEach(() => {

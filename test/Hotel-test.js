@@ -3,33 +3,41 @@ const expect = chai.expect;
 const {customersData, roomsData, bookingsData} = require('./sample-dataset');
 import Hotel from '../src/classes/Hotel';
 import Customer from '../src/classes/Customer';
-import Manager from '../src/classes/Manager';
 
-describe('Overlook Hotel', () => {
-	let overlook;
+describe.only('Hotel', () => {
+	let overlook, testCustomer;
 
 	beforeEach(() => {
-		overlook = new Hotel();
+		overlook = new Hotel(customersData, bookingsData, roomsData);
+		testCustomer = new Customer(customersData[0], bookingsData, roomsData);
 	});
 
 	it('should be a function', () => {
 		expect(Hotel).to.be.a('function');
 	});
 
-  it('should have all bookings data', () => {
+	it('should have a list of all customers with accounts', () => {
+		expect(overlook.customers.length).to.equal(customersData.length);
+		expect(overlook.customers[0]).to.deep.equal(testCustomer);
+
+	});
+
+  it('should have all rooms data', () => {
     expect(overlook.rooms).to.equal(roomsData);
   });
 
 	it('should have all booking data', () => {
-    expect(overlook.bookings).to.equal(bookingsData);
+    expect(overlook.bookings.length).to.equal(bookingsData.length);
 	});
 
 	it('should keep track of revenue', () => {
 		overlook.getRevenue()
-		expect(customer.revenue).to.equal(477.38)
+		expect(overlook.revenue).to.equal(2016.6)
 	});
 
-  it('should have a manager', () => {
-    expect(overlook.manager).to.be.an.instanceOf(Manager)
+  it('should be able to get avilable rooms by date', () => {
+		let testDate = '2022/04/22';
+		let output = overlook.getAvailableRooms(testDate)
+    expect(output.length).to.equal(4)
   })
 })

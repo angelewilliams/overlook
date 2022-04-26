@@ -4,7 +4,7 @@ const {customersData, roomsData, bookingsData} = require('./sample-dataset');
 import Hotel from '../src/classes/Hotel';
 import Customer from '../src/classes/Customer';
 
-describe.only('Hotel', () => {
+describe('Hotel', () => {
 	let overlook, testCustomer;
 
 	beforeEach(() => {
@@ -39,5 +39,11 @@ describe.only('Hotel', () => {
 		let testDate = '2022/04/22';
 		let output = overlook.getAvailableRooms(testDate)
     expect(output.length).to.equal(4)
-  })
-})
+  });
+
+	it('should have a list of room options', () => {
+		let options = ['residential suite', 'suite', 'single room'];
+		expect(overlook.roomOptions).to.deep.equal(options)
+	});
+
+});

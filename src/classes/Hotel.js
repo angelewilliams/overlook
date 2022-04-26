@@ -7,20 +7,21 @@ class Hotel {
     this.rooms = roomsData;
     this.bookings = this.getBookings(bookingsData, roomsData);
     this.revenue;
+    this.roomOptions = this.getRoomOptions();
   }
-
-  getBookings(bookingsData, roomsData) {
-    let output = bookingsData.map((booking) => {
-      return new Booking(booking, roomsData)
-    })
-    return this.bookings = output
-  };
 
   getCustomers(customersData, bookingsData, roomsData) {
     let output = customersData.map((customer) => {
       return new Customer(customer, bookingsData, roomsData)
     })
     return this.customers = output;
+  };
+
+  getBookings(bookingsData, roomsData) {
+    let output = bookingsData.map((booking) => {
+      return new Booking(booking, roomsData)
+    })
+    return this.bookings = output
   };
 
   getRevenue() {
@@ -31,6 +32,16 @@ class Hotel {
       return revenueHotel;
     }, 0)
     return this.revenue = output;
+  };
+
+  getRoomOptions() {
+    let output = this.rooms.reduce((types, room) => {
+      if(!types.includes(room.roomType)){
+        types.push(room.roomType)
+      }
+      return types
+    }, []);
+    return this.roomOptions = output;
   };
 
   getAvailableRooms(date){
@@ -47,11 +58,16 @@ class Hotel {
   return availableRooms;
   };
 
-}
-//maybe a filter
-// console.log(booking.date !== date)
-// console.log(booking.date, date)
-// console.log((booking.date !== date) , (!acc.includes(room)))
-//if I find the rooms that ARE booked then I just don't include those
+  filterByType(date, type){
+    let availableList = this.getAvailableRooms(date);
+
+    let output = availableList.filter((room) => {
+     return room.roomType.includes(type);
+   });
+
+   return output;
+  };
+
+};
 
 export default Hotel;

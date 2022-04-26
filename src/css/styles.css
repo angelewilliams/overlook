@@ -225,6 +225,36 @@ h2 {
     all of this is duplicated above
 
 } */
+  .available-rooms-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3px;
+    padding: 2px;
+
+  }
+  .avilable-room-info {
+
+    background-color: #414833;
+    color: white;
+    border-radius: 3px;
+    width: 95%;
+    margin: 5px;
+    padding: 7px;
+  }
+
+.room-preview {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
   .no-bookings-message {
     background-color: #ada4a0;
     color: #E2E2E2;

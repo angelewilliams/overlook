@@ -41,32 +41,44 @@
       </section>
 
       <section class="book-room user-view hidden" id="userBookRoomView" >
-        <div class="plan-trip-area">
+        <div class="booking-area">
           <h1 class="">Book a Room</h1>
-          <form class="book-trip-form" id="bookRoomForm">
-
+          <form class="book-room-form" id="bookRoomForm">
             <span class="label-style">
               <label for="date" class="label-names">Arrival date</label>
               <input type="date" class="date-picker" id="date" name="date" required>
             </span>
-
-            <!-- <span class="label-style">
-              <label for="rooms" class="label-names">Room Preferences</label>
-              <select name="rooms" class="rooms-list" id="rooms" value="rooms"></select>
-            </span> -->
-
             <input type="submit" value="Find a Room" id="submitFindRoom" class=" button"
               aria-label="Find a Room">
             <input type="submit" value="Confirm Booking" id="submitBookHotlRoom" class="book-hotel-button hidden button"
               aria-label="Confirm Room Booking">
           </form>
-          <h2 class="estimated-cost"></h2>
         </div>
-        <form>
-        </form>
-        <article class="available-rooms-wrapper room-preview">
+        <div>
+          <div class= "available-rooms-wrapper">
 
-        </article>
+            <form class="filters" id="bookingFilters">
+              <h2>Filter By Room Type</h2>
+              <input type="radio" id="singleRoom" name="booking-filters" value="single room">
+              <label for="singleRoom">Single Room</label>
+
+              <input type="radio" id="suite" name="booking-filters" value="suite">
+              <label for="suite">Suite</label>
+
+              <input type="radio" id="resSuite" name="booking-filters" value="residential suite">
+              <label for="resSuite">Residential Suite</label>
+
+              <input type="radio" id="juniorSuite" name="booking-filters" value="junior suite">
+              <label for="juniorSuite">Junior Suite</label>
+
+              <button id="clear" type="reset" class="reset-filters-button" name="booking-filters">
+              Reset Filters
+              </button>
+            </form>
+          </div>
+          <section class="room-preview" id='availableRooms'>
+          </section>
+      </div>
       </section>
     </section>
 

@@ -177,10 +177,12 @@ const resetRender = (buttonType) => {
   let formattedDate = date.value.split("-").join("/")
   if (buttonType === 'clear'){
     displayAvailableRooms(formattedDate)
+    bookingFiltersForm.reset();
   } else if (buttonType === 'resetDateSearch') {
     availableRoomsSection.innerHTML = '';
     hideElement(roomsWrapper)
     bookRoomForm.reset();
+    bookingFiltersForm.reset();
   }
 };
 

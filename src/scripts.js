@@ -33,6 +33,8 @@ const date = document.getElementById('date');
 const bookRoomForm = document.getElementById('bookRoomForm');
 const bookingFiltersForm = document.getElementById('bookingFilters');
 const availableRoomsSection = document.getElementById('availableRooms');
+const roomsWrapper = document.getElementById('roomsWrapper');
+const resetDateSearch = document.getElementById('resetDateSearch');
 
 const userView = document.querySelector('.user-view');
 const loginPage = document.querySelector('.login-page');
@@ -89,19 +91,29 @@ const createEventListeners = (customersData, roomsData, bookingsData, getData, p
     selectRoomToBook(e);
   })
 
-}
+  resetDateSearch.addEventListener('click', (e) => {
+    resetRender(e.target.id)
+  });
+
+
+   myBookingsNav.addEventListener('click', viewHome);
+
+   logoutNav.addEventListener('click', (e) => {
+
+   });
+
+};
 
 //------------------Event Handlers-------------------
 
 const selectRoomToBook = (e) => {
-  console.log(e.target.id)
-  postBooking(e.target.id, )
+  postBooking(e.target.id);
+
+
 }
 
 const postBooking = (id) => {
-  console.log(id)
   let numId = parseInt(id)
-  console.log(numId)
   let formattedDate = date.value.split('-').join('/');
   let newBooking = { "userID": currentUser.id, "date": formattedDate, "roomNumber": numId };
 
@@ -123,9 +135,10 @@ const postBooking = (id) => {
       overlookHotel = new Hotel(customersData, newBookingsData, roomsData);
       currentUser.getBookings(newBookingsData, roomsData);
       currentUser.calculateTotalSpend();
-      // viewHome();
+      resetRender('resetDateSearch')
+      viewHome();
       loadCustomerDashboard(currentUser);
-      displayMessage('woohoo.')
+      displayMessage('Booking successful! We look forward to your stay at The Overlook!')
     })
     .catch(error => {
       displayMessage('There was a problem completing your request. Please try again later.')
@@ -134,7 +147,10 @@ const postBooking = (id) => {
 };
 
 const viewHome = () => {
-  // console.log('build out view home')
+    bookARoomNav.classList.remove('active')
+    myBookingsNav.classList.add('active')
+    showElement(bookingsDashboard);
+    hideElement(userBookRoomView);
 };
 
 const filterRoomsByType = (e) => {
@@ -142,7 +158,7 @@ const filterRoomsByType = (e) => {
       displayFilteredTags(e.target.value);
     };
     if(e.target.id === 'clear') {
-      resetRender();
+      resetRender(e.target.id);
     };
 };
 
@@ -157,12 +173,20 @@ const displayFilteredTags = (type) => {
   });
 };
 
-const resetRender = () => {
+const resetRender = (buttonType) => {
   let formattedDate = date.value.split("-").join("/")
-  displayAvailableRooms(formattedDate)
+  if (buttonType === 'clear'){
+    displayAvailableRooms(formattedDate)
+  } else if (buttonType === 'resetDateSearch') {
+    availableRoomsSection.innerHTML = '';
+    hideElement(roomsWrapper)
+    bookRoomForm.reset();
+  }
 };
 
 const displayBookingForm = () => {
+  bookARoomNav.classList.add('active')
+  myBookingsNav.classList.remove('active')
   hideElement(bookingsDashboard);
   showElement(userBookRoomView);
 }
@@ -211,7 +235,7 @@ const findARoom = (e) => {
 };
 
 const displayAvailableRooms = (formattedDate) => {
-  console.log(formattedDate)
+  showElement(roomsWrapper);
   availableRoomsSection.innerHTML = '';
   let availableRooms = overlookHotel.getAvailableRooms(formattedDate);
   if(availableRooms.length) {
@@ -224,10 +248,11 @@ const displayAvailableRooms = (formattedDate) => {
        </div>`
     });
   } else if (!availableRooms.length) {
-
+    hideElement(roomsWrapper);
     availableRoomsSection.innerHTML += `
     <div class="no-rooms-available">
-      <p>Oh no! We currently have no rooms available for ${formattedDate}. We are very sorry that we cannot meet your accomodation needs but would love you to stay another time!</p>
+      <p>Oh no! We currently have no rooms available for ${formattedDate}. </p>
+      <p>We are very sorry that we cannot meet your accomodation needs but would love you to stay another time!</p>
     </div>`
   }
 };

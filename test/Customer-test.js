@@ -37,7 +37,4 @@ describe('Customer', () => {
 		expect(customer.totalSpend).to.equal(costOfRooms);
 	});
 
-	// it('should be able to book a room', () => {
-	//
-	// });
 });

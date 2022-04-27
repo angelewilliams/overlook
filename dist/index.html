@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Baumans&family=IBM+Plex+Sans:wght@100;400&family=Iceland&family=Montserrat&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baumans&family=IBM+Plex+Sans:wght@100;400&family=Iceland&family=Montserrat&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Overlook Hotel</title>
   </head>
   <body>
-
     <section class="login-page" id="loginPage">
       <img class="logo" src="./images/overlook-logo-shadow.png" alt="Overlook logo with shadow">
         <div class="login-wrapper">
@@ -25,8 +24,6 @@
         <p id="loginMessage"></p>
       </div>
     </section>
-
-
     <nav class="top-nav" id="topNav">
       <img class="logo" src="./images/overlook-logo.png" alt="Overlook logo">
       <div class="top-nav-options">
@@ -43,7 +40,6 @@
     <main>
       <section class="bookings-dashboard-wrapper">
       <div class="bookings-dashboard-background"> </div>
-
       <section class="bookings-dashboard user-view" id="bookingsDashboard">
         <div class="total-spend">
           <h2 class="total-spend-text" id="customerTotalSpend"></h2>
@@ -81,21 +77,16 @@
         </div>
         <div>
           <div class= "available-rooms-wrapper hidden" id="roomsWrapper">
-
             <form class="filters" id="bookingFilters">
               <h2>Filter By Room Type</h2>
               <input type="radio" id="singleRoom" name="booking-filters" value="single room">
               <label for="singleRoom">Single Room</label>
-
               <input type="radio" id="suite" name="booking-filters" value="suite">
               <label for="suite">Suite</label>
-
               <input type="radio" id="resSuite" name="booking-filters" value="residential suite">
               <label for="resSuite">Residential Suite</label>
-
               <input type="radio" id="juniorSuite" name="booking-filters" value="junior suite">
               <label for="juniorSuite">Junior Suite</label>
-
               <button id="clear" type="reset" class="reset-filters-button button" name="booking-filters">
               Reset Filters
               </button>

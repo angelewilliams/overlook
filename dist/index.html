@@ -48,14 +48,20 @@
         <div class="total-spend">
           <h2 class="total-spend-text" id="customerTotalSpend"></h2>
         </div>
-        <section class="current-bookings-area bookings-display" id="currentBookings">
+        <section class="current-bookings-area bookings-display" id="">
           <h2 class="current-bookings-text bookings-text"> Current Bookings</h2>
+          <div id="currentBookings">
+          </div>
         </section>
-        <section class="upcoming-bookinigs-area bookings-display" id="upcomingBookings">
+        <section class="upcoming-bookinigs-area bookings-display">
           <h2 class="upcoming-bookings-text bookings-text">Upcoming Bookings</h2>
+          <div id="upcomingBookings">
+          </div>
         </section>
-        <section class="past-bookings-area bookings-display" id="pastBookings">
+        <section class="past-bookings-area bookings-display">
           <h2 class="past-bookings-text bookings-text">Past Bookings</h2>
+          <div id="pastBookings">
+          </div>
         </section>
       </section>
 
@@ -100,9 +106,7 @@
       </div>
       </section>
     </section>
-
     </main>
-    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>

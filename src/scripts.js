@@ -73,17 +73,13 @@ const handleData = (data) => {
 };
 
 const loadOverlook = (customersData, roomsData, bookingsData, getData, postData) => {
-
   let i = (currentUser - 1);
-  console.log('i', i , "currentUser" , currentUser)
   currentUser = new Customer(customersData[i], bookingsData, roomsData);
-  console.log(currentUser)
   overlookHotel = new Hotel(customersData, bookingsData, roomsData);
   loadCustomerDashboard(currentUser);
 };
 
 //------------------Event Listeners------------------
-// window.addEventListener('load', fetchData());
 loginSubmitButton.addEventListener('click', (e) => {
   attemptLogin(e)
  });
@@ -222,29 +218,34 @@ const displayBookingForm = () => {
 }
 
 const loadCustomerDashboard = (customer) => {
+  pastBookings.innerHTML = '';
+  upcomingBookings.innerHTML = '';
+  currentBookings.innerHTML = '';
+
   customerTotalSpend.innerText = `Total Spend: $${customer.totalSpend}`;
   customer.bookings.forEach((booking) => {
-    let today = new Date();
-    let bookingDate = new Date(booking.date);
+    let today = new Date().toDateString();
+    let bookingDate = new Date(booking.date).toDateString();
+
     if (bookingDate < today) {
       pastBookings.innerHTML += bookingPreview(booking)
     };
     if (bookingDate > today){
       upcomingBookings.innerHTML += bookingPreview(booking)
     };
-    if (bookingDate == today) {
+    if (bookingDate === today) {
       currentBookings.innerHTML += bookingPreview(booking)
     };
   });
 };
 
 const bookingPreview = (booking) => {
-    return `
-      <div class="booking-preview">
-        <p>Date: ${booking.date}</p>
-        <p>${booking.roomType} with ${booking.numBeds} bed(s)</p>
-        <p>Total: $${booking.cost}</p>
-      </div>`
+  return `
+    <div class="booking-preview" id="${booking.id}">
+      <p>Date: ${booking.date}</p>
+      <p>${booking.roomType} with ${booking.numBeds} bed(s)</p>
+      <p>Total: $${booking.cost}</p>
+    </div>`
 };
 
 const displayMessage = (messageText) => {
@@ -287,7 +288,6 @@ const displayAvailableRooms = (formattedDate) => {
   }
 };
 
-
 const showElement = (element) => {
   element.classList.remove("hidden");
 };
@@ -295,16 +295,6 @@ const showElement = (element) => {
 const hideElement = (element) => {
   element.classList.add("hidden");
 };
-//
-// const toggleButton = (button, input) => {
-//    if (input.value === '') {
-//        button.disabled = true;
-//        button.classList.add('disabled');
-//    } else {
-//        button.disabled = false;
-//        button.classList.remove('disabled');
-//    }
-// };
 
 export {
   displayMessage

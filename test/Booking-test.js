@@ -37,4 +37,4 @@ describe('Booking', () => {
     expect(booking1.numBeds).to.equal(2);
     expect(booking1.cost).to.equal(340.17);
   });
-})
+});

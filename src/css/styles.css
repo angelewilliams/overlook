@@ -1,28 +1,10 @@
-/* Style Resources */
-    /* FONTS */
-    /* font-family: 'IBM Plex Sans', sans-serif;
-    font-family: 'Iceland', cursive;
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Unica One', cursive; */
-
-    /* COLORS */
-    /* #384D48 = Dark Slate Gray
-    #6E7271 = Nickel
-    #ACAD94 = Laurel Green
-    #D8D4D5 = Light Gray
-    #E2E2E2 = Plantinum */
-* {
-  /* border: red 2px solid; */
- }
-
-
 html {
   width: 100%;
   height: 100%;
   background: url('../images/back-ground.png') no-repeat center center fixed;
   background-size: cover;
-
 }
+
 body {
   width: 100%;
   height: 100%;
@@ -30,12 +12,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 header {
   height: 90px;
   width:100%;
   position: fixed;
   top: 0;
-
 }
 
 main {
@@ -80,6 +62,7 @@ h2 {
   background-color: #7F4F24;
   height: 5vw;
 }
+
 .alert-message {
   color: #FFFFFF;
   text-align: center;
@@ -116,6 +99,7 @@ h2 {
   padding: 4px;
   border-radius: 5px;
 }
+
 .active {
   color: #c1b7ae;
   padding: 4px;
@@ -132,8 +116,8 @@ h2 {
   margin: 3px;
   border-radius: 5px;
   cursor: pointer;
-
 }
+
 .bookIt {
   background-color: #FAF2EC;
   color: #402712;
@@ -202,7 +186,7 @@ h2 {
     border-radius: 3px;
     margin: 3px;
     padding: 2px;
-    width: 95%;
+    width: 120%;
   }
 
   p::first-letter {
@@ -227,10 +211,9 @@ h2 {
     align-items: center;
     margin: 3px;
     padding: 2px;
-
   }
-  .avilable-room-info {
 
+  .avilable-room-info {
     background-color: #414833;
     color: white;
     border-radius: 6px;
@@ -247,6 +230,7 @@ h2 {
     align-items: center;
     text-align: center;
 }
+
 .no-rooms-available {
   background-color: #656D4A;
   color: white;
@@ -297,8 +281,6 @@ h2 {
   align-items: center;
   flex-wrap: nowrap;
 }
-
-
 
 .hidden {
   display: none;

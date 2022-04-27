@@ -8,12 +8,31 @@
     <title>Overlook Hotel</title>
   </head>
   <body>
+
+    <section class="login-page" id="loginPage">
+      <img class="logo" src="./images/overlook-logo-shadow.png" alt="Overlook logo with shadow">
+        <div class="login-wrapper">
+        <h1 class="login-text">Login</h1>
+        <form id="loginForm" class="login-form">
+          <label for="username" class="login-form">Username</label>
+          <input type="text" name="username" id="usernameInput" class="username login-form-field" placeholder="Username"
+           required><br>
+          <label for="password" class="login-form">Password</label>
+          <input type="password" name="password" id="passwordInput" class="password login-form-field"
+           placeholder="Password" required><br>
+          <button type="submit" class="button" id="loginFormSubmit">Submit</button>
+        </form>
+        <p id="loginMessage"></p>
+      </div>
+    </section>
+
+
     <nav class="top-nav" id="topNav">
       <img class="logo" src="./images/overlook-logo.png" alt="Overlook logo">
       <div class="top-nav-options">
         <input class="top-nav-text active" type="button" id="myBookings" value="My Bookings">
         <input class="top-nav-text" type="button" id="bookARoom" value="Book a Room">
-        <input class="top-nav-text logoutAction" type="button" id="logout" value="Logout">
+        <input class="top-nav-text logoutAction" type="reset" id="logout" value="Logout">
       </div>
     </nav>
     <div class="alert hidden" id="alertBox">

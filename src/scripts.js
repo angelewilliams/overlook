@@ -1,6 +1,7 @@
 //------------------ Imports -------------------
 import './css/styles.css';
 import './images/overlook-logo.png';
+import './images/overlook-logo-shadow.png';
 import {
   customersAPI,
   roomsAPI,
@@ -27,7 +28,14 @@ const pastBookings = document.getElementById('pastBookings');
 
 const myBookingsNav = document.getElementById('myBookings');
 const bookARoomNav = document.getElementById('bookARoom');
+
+const loginPage = document.getElementById('loginPage');
+const loginForm = document.getElementById('loginForm')
+const usernameInput = document.getElementById('usernameInput')
+const passwordInput = document.getElementById('passwordInput')
+const loginSubmitButton = document.getElementById('loginFormSubmit');
 const logoutNav = document.getElementById('logout');
+const loginMessage = document.getElementById('loginMessage')
 
 const date = document.getElementById('date');
 const bookRoomForm = document.getElementById('bookRoomForm');
@@ -36,9 +44,6 @@ const availableRoomsSection = document.getElementById('availableRooms');
 const roomsWrapper = document.getElementById('roomsWrapper');
 const resetDateSearch = document.getElementById('resetDateSearch');
 
-const userView = document.querySelector('.user-view');
-const loginPage = document.querySelector('.login-page');
-const loginSubmitButton = document.querySelector('.submit-button');
 
 //------------------Global Variables -----------------
 let customersData;
@@ -50,6 +55,7 @@ let getData;
 let postData;
 
 //-------------------------APIs------------------------
+
 const fetchData = () => {
   Promise.all([customersAPI, roomsAPI, bookingsAPI, getRequest, postRequest])
     .then(data => {
@@ -67,14 +73,20 @@ const handleData = (data) => {
 };
 
 const loadOverlook = (customersData, roomsData, bookingsData, getData, postData) => {
-  let i = Math.floor(Math.random() * customersData.length);
+
+  let i = (currentUser - 1);
+  console.log('i', i , "currentUser" , currentUser)
   currentUser = new Customer(customersData[i], bookingsData, roomsData);
+  console.log(currentUser)
   overlookHotel = new Hotel(customersData, bookingsData, roomsData);
   loadCustomerDashboard(currentUser);
 };
 
 //------------------Event Listeners------------------
-window.addEventListener('load', fetchData());
+// window.addEventListener('load', fetchData());
+loginSubmitButton.addEventListener('click', (e) => {
+  attemptLogin(e)
+ });
 
 const createEventListeners = (customersData, roomsData, bookingsData, getData, postData) => {
   bookARoomNav.addEventListener('click', displayBookingForm);
@@ -88,28 +100,44 @@ const createEventListeners = (customersData, roomsData, bookingsData, getData, p
   });
 
   availableRoomsSection.addEventListener('click', (e) => {
-    selectRoomToBook(e);
+    bookThisRoom(e);
   })
 
   resetDateSearch.addEventListener('click', (e) => {
     resetRender(e.target.id)
   });
 
+  myBookingsNav.addEventListener('click', viewHome);
 
-   myBookingsNav.addEventListener('click', viewHome);
-
-   logoutNav.addEventListener('click', (e) => {
-
-   });
-
+  logoutNav.addEventListener('click', logout);
 };
 
 //------------------Event Handlers-------------------
 
-const selectRoomToBook = (e) => {
+const attemptLogin = (e) =>{
+  e.preventDefault();
+  loginUser();
+}
+
+const loginUser = () => {
+  loginMessage.innerText = '';
+  currentUser = usernameInput.value.split('').splice(8, 3).join('');
+  if (usernameInput.value.slice(0, 8) === 'customer' && usernameInput.value.slice(8) > 0 && usernameInput.value.slice(8) <= 50 && passwordInput.value === 'overlook2021') {
+    fetchData();
+    hideElement(loginPage);
+  } else {
+      loginMessage.innerText = `You have entered the wrong username or password!`;
+      showElement(loginPage);
+    };
+};
+
+const logout = () => {
+  showElement(loginPage);
+  loginForm.reset();
+}
+
+const bookThisRoom = (e) => {
   postBooking(e.target.id);
-
-
 }
 
 const postBooking = (id) => {
@@ -267,7 +295,16 @@ const showElement = (element) => {
 const hideElement = (element) => {
   element.classList.add("hidden");
 };
-
+//
+// const toggleButton = (button, input) => {
+//    if (input.value === '') {
+//        button.disabled = true;
+//        button.classList.add('disabled');
+//    } else {
+//        button.disabled = false;
+//        button.classList.remove('disabled');
+//    }
+// };
 
 export {
   displayMessage
